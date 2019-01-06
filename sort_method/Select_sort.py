@@ -1,5 +1,10 @@
 def find_samll(l):
-    small=min(l)
+    # small=min(l)
+    # return small
+    small=l[0]
+    for i in range(1,len(l)):
+        if small>l[i]:
+            small=l[i]
     return small
 
 def Select_sort(l):
