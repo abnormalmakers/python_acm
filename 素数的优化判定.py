@@ -62,12 +62,81 @@ def six_isPrime(n):
                 return False
         return True
 
-papa=int(input())
-count=0
-for i in range(2,papa+1):
-    if six_isPrime(i):
-        count+=1
-print(count)
+
+
+
+"""
+
+8600的手机每天消费1元，每消费K元就可以获赠1元，一开始8600有M元，问最多可以用多少天？
+
+Input
+
+ 输入包括多个测试实例.每个测试实例包括2个整数M, k，（2 <= k <= M <= 1000).M = 0, k = 0代表输入结束.   	
+
+Output
+
+ 对于每个测试实例输出一个整数，表示M元可以用的天数。   	
+
+Sample Input
+
+2 2
+4 3
+0 0
+
+Sample Output
+
+3
+5
+
+"""
+
+while True:
+    try:
+        M,k=(map(int,input().strip().split()))
+        day=0
+        if not M and not k:
+            break
+        if not M:
+            print(0)
+            continue
+        if M<k:
+            print(M)
+            continue
+        else:
+            while M:
+                day += 1
+                if day%k:
+                    M-=1
+            else:
+                print(day)
+    except:
+        break
+
+
+
+
+# price   day
+# 5       0
+# 4       1
+# 4=3+1       2
+# 3       3
+# 3=2+1       4
+# 2       5
+# 2=1+1       6
+# 1       7
+# 1=0+1       8
+# 0       9
+# 5       0
+# 4       1
+# 3       2
+# 3=2+1       3
+# 2       4
+# 1       5
+# 1=0+1       6
+# 0       7
+
+
+
 
 
 
