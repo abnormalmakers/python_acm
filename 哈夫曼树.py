@@ -30,6 +30,89 @@ Sample Output
 
 """
 
+l=[1,2,9,5,7]
+
+"""
+    12
+9       3
+    2       1
+1+2+3+9=15
+
+        24
+     9     15
+        7       8
+            5       3
+                2       1
+
+1+2+3+5+8+7+15+9=50
+
+        24
+     5     19
+        7       12
+            9       3 c sums
+                2       1
+
+1+2+3+9+12+7+19+5=58
+6 15 27 34 53 58
+
+35
+    26
+8       18
+    7       11
+        6        5
+            1       4
+1+4+6+5+7+11+8+18
+
+"""
+n=int(input())
+l=list(map(int,input().strip().split()))
+
+def sipt(l,dad_node,last_node):
+    left_child = dad_node * 2 + 1
+    temp=l[dad_node]
+    while left_child<=last_node:
+        if left_child+1<=last_node and l[left_child]<l[left_child+1]:
+            left_child+=1
+        if l[left_child]>temp:
+            l[dad_node]=l[left_child]
+            dad_node=left_child
+            left_child=dad_node*2+1
+        else:
+            break
+    l[dad_node]=temp
+
+def heap_sort(l):
+    n=len(l)
+    for i in range(n//2-1,-1,-1):
+        sipt(l,i,n-1)
+
+    for i in range(n-1,-1,-1):
+        l[0],l[i]=l[i],l[0]
+        sipt(l,0,i-1)
+
+heap_sort(l)
+
+def main(l):
+    if len(l)<3:
+        return sum(l)
+    else:
+        c=l[0]+l[1]
+        sums=c
+        for i in range(2,len(l)):
+            c+=l[i]
+            sums+=c
+        return sums
+result=main(l)
+print(result)
+
+
+
+
+
+
+
+
+
 
 
 
